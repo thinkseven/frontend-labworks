@@ -1,2 +1,2 @@
-# frontend labworks
-Find examples on front-end development
+# Lab Works
+Find examples
