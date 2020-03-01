@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --open",
-    "build-dev": "webpack --config webpack.config.js --mode development --watch",
-    "build": "webpack --config webpack.config.js --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env SIMULATOR=true webpack-dev-server --hot --open",
+    "build": "cross-env SIMULATOR=false webpack --config webpack.config.js --mode production --watch"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +19,7 @@
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
+    "cross-env": "^7.0.0",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.1",

@@ -1,13 +1,7 @@
 
 import React from 'react'
-import './App.scss'
+import Visualizer from './components/Visualizer'
 
-const App = (input) => {
-    return (
-        <div className="container">
-            <pre>{JSON.stringify(input, null, 2)}</pre>
-        </div>
-    )
-}
+const App = (input) => (<Visualizer input={input}></Visualizer>)
 
 export default App;

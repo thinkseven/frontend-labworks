@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: process.env['SIMULATOR'] === 'false' ? './src/index.js' : './src/index-start.js',
     output: {
         filename: 'visualizer.js',
         path: path.resolve(__dirname, 'build')
@@ -10,6 +10,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
+            title: 'Json Visualizer - Postman Sandbox',
             hash: false
         })
     ],
@@ -21,7 +22,8 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules/,
+                exclude: [/node_modules/,
+                    path.resolve(__dirname, 'src/pm.js')],
                 loader: require.resolve('babel-loader')
             },
             {
