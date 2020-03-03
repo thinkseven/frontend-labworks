@@ -22,8 +22,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude: [/node_modules/,
-                    path.resolve(__dirname, 'src/pm.js')],
+                exclude: /node_modules/,
                 loader: require.resolve('babel-loader')
             },
             {
