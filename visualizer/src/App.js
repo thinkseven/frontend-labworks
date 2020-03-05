@@ -1,27 +1,34 @@
 
 import React, { Component } from 'react'
-import JSONInput from 'react-json-editor-ajrm';
 import Visualizer from './components/Visualizer'
-import pkg from '../package.json'
-import './App.scss'
+import 'normalize.css'
+import './App.css'
 
 class App extends Component {
+
+    state = {
+        jsonInput: {}
+    }
+
     render() {
         return (
-            <div className="container">
-                <div>
-
+            <div className="wrapper">
+                <div className="item-input">
+                    <textarea className="txtArea" onPaste={(event) => {
+                        let paste = (event.clipboardData || window.clipboardData).getData('text');
+                        this.setState({
+                            jsonInput: JSON.parse(paste)
+                        })
+                    }} onChange={(event) => {
+                        let newJson = JSON.parse(event.target.value);
+                        this.setState({
+                            jsonInput: newJson
+                        })
+                    }}>
+                    </textarea>
                 </div>
-                <div>
-                    <JSONInput
-                        id='a_unique_id'
-                        placeholder={pkg}
-                        height='100%'
-                        width='100%'
-                    />
-                </div>
-                <div>
-                    <Visualizer src={pkg}></Visualizer>
+                <div className="item-display">
+                    <Visualizer src={this.state.jsonInput}></Visualizer>
                 </div>
             </div>
         )

@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    // https://reactjs.org/docs/cross-origin-errors.html
+    devtool: 'cheap-module-source-map',
     entry: process.env['SIMULATOR'] === 'false' ? './src/index.js' : './src/index-start.js',
     output: {
         filename: 'visualizer.js',
@@ -26,8 +28,9 @@ module.exports = {
                 loader: require.resolve('babel-loader')
             },
             {
-                test: /\.s?css$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                test: /\.css$/,
+                exclude: /node_mdules/,
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             }
         ]
     }

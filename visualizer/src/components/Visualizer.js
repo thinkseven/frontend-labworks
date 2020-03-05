@@ -1,12 +1,12 @@
 
-import React from 'react'
-import './Visualizer.scss'
+import React, { ReactFragment } from 'react'
+import './Visualizer.css'
 
 const Visualizer = (input) => {
     return (
-        <div className="container">
+        <React.Fragment>
             <pre>{JSON.stringify(input, null, 2)}</pre>
-        </div>
+        </React.Fragment>
     )
 }
 
