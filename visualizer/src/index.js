@@ -3,5 +3,5 @@ import ReactDOM from 'react-dom'
 import Visualizer from './components/Visualizer'
 
 pm.getData((error, response) => {
-    ReactDOM.render(<Visualizer input={response} />, document.getElementById("root"))
+    ReactDOM.render(<Visualizer src={response} />, document.getElementById("root"))
 })

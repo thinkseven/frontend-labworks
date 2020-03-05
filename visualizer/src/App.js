@@ -7,7 +7,7 @@ import './App.css'
 class App extends Component {
 
     state = {
-        jsonInput: {}
+        jsonInput: null
     }
 
     render() {
@@ -20,9 +20,8 @@ class App extends Component {
                             jsonInput: JSON.parse(paste)
                         })
                     }} onChange={(event) => {
-                        let newJson = JSON.parse(event.target.value);
                         this.setState({
-                            jsonInput: newJson
+                            jsonInput: JSON.parse(event.target.value)
                         })
                     }}>
                     </textarea>
